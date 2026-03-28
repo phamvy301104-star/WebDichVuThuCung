@@ -44,12 +44,12 @@ const seedComplete = async () => {
     // 2. PRODUCT CATEGORIES
     // ============================
     const categoryData = [
-      { name: 'Thức ăn', description: 'Thức ăn cho thú cưng các loại', icon: '🍖' },
-      { name: 'Phụ kiện', description: 'Phụ kiện, đồ dùng cho thú cưng', icon: '🎀' },
-      { name: 'Đồ chơi', description: 'Đồ chơi giải trí cho thú cưng', icon: '🎾' },
-      { name: 'Sức khỏe', description: 'Sản phẩm chăm sóc sức khỏe thú cưng', icon: '💊' },
-      { name: 'Vệ sinh', description: 'Sản phẩm vệ sinh, tắm rửa thú cưng', icon: '🧴' },
-      { name: 'Quần áo', description: 'Quần áo, trang phục cho thú cưng', icon: '👕' },
+      { name: 'Thức ăn', description: 'Thức ăn cho thú cưng các loại', icon: '🍖', imageUrl: 'https://picsum.photos/seed/cat-food/400/400' },
+      { name: 'Phụ kiện', description: 'Phụ kiện, đồ dùng cho thú cưng', icon: '🎀', imageUrl: 'https://picsum.photos/seed/cat-accessory/400/400' },
+      { name: 'Đồ chơi', description: 'Đồ chơi giải trí cho thú cưng', icon: '🎾', imageUrl: 'https://picsum.photos/seed/cat-toy/400/400' },
+      { name: 'Sức khỏe', description: 'Sản phẩm chăm sóc sức khỏe thú cưng', icon: '💊', imageUrl: 'https://picsum.photos/seed/cat-health/400/400' },
+      { name: 'Vệ sinh', description: 'Sản phẩm vệ sinh, tắm rửa thú cưng', icon: '🧴', imageUrl: 'https://picsum.photos/seed/cat-hygiene/400/400' },
+      { name: 'Quần áo', description: 'Quần áo, trang phục cho thú cưng', icon: '👕', imageUrl: 'https://picsum.photos/seed/cat-clothes/400/400' },
     ];
     const cats = [];
     for (const c of categoryData) {
@@ -66,12 +66,12 @@ const seedComplete = async () => {
     // 3. BRANDS
     // ============================
     const brandData = [
-      { name: 'Royal Canin', description: 'Thương hiệu thức ăn cao cấp từ Pháp', website: 'https://www.royalcanin.com' },
-      { name: 'Whiskas', description: 'Thức ăn cho mèo uy tín toàn cầu', website: 'https://www.whiskas.com' },
-      { name: 'Pedigree', description: 'Thức ăn cho chó hàng đầu thế giới', website: 'https://www.pedigree.com' },
-      { name: 'Me-O', description: 'Thức ăn cho mèo phổ biến', website: '' },
-      { name: 'Catidea', description: 'Phụ kiện và đồ dùng cho thú cưng', website: '' },
-      { name: 'PetMart', description: 'Chuỗi cửa hàng thú cưng lớn nhất Việt Nam', website: 'https://www.petmart.vn' },
+      { name: 'Royal Canin', description: 'Thương hiệu thức ăn cao cấp từ Pháp', website: 'https://www.royalcanin.com', logoUrl: 'https://picsum.photos/seed/royal-canin/400/400' },
+      { name: 'Whiskas', description: 'Thức ăn cho mèo uy tín toàn cầu', website: 'https://www.whiskas.com', logoUrl: 'https://picsum.photos/seed/whiskas/400/400' },
+      { name: 'Pedigree', description: 'Thức ăn cho chó hàng đầu thế giới', website: 'https://www.pedigree.com', logoUrl: 'https://picsum.photos/seed/pedigree/400/400' },
+      { name: 'Me-O', description: 'Thức ăn cho mèo phổ biến', website: '', logoUrl: 'https://picsum.photos/seed/me-o/400/400' },
+      { name: 'Catidea', description: 'Phụ kiện và đồ dùng cho thú cưng', website: '', logoUrl: 'https://picsum.photos/seed/catidea/400/400' },
+      { name: 'PetMart', description: 'Chuỗi cửa hàng thú cưng lớn nhất Việt Nam', website: 'https://www.petmart.vn', logoUrl: 'https://picsum.photos/seed/petmart/400/400' },
     ];
     const brands = [];
     for (const b of brandData) {
@@ -111,18 +111,18 @@ const seedComplete = async () => {
     const spaCat = await ServiceCategory.findOne({ name: 'Spa & Thư giãn' });
 
     const serviceData = [
-      { name: 'Cắt tỉa lông chó', serviceCode: 'SVC001', slug: 'cat-tia-long-cho', price: 150000, duration: 60, category: groomingCat?._id, description: 'Cắt tỉa lông chuyên nghiệp cho chó, tạo kiểu theo yêu cầu', isFeatured: true },
-      { name: 'Cắt tỉa lông mèo', serviceCode: 'SVC002', slug: 'cat-tia-long-meo', price: 180000, duration: 60, category: groomingCat?._id, description: 'Cắt tỉa lông chuyên nghiệp cho mèo, nhẹ nhàng và an toàn', isFeatured: true },
-      { name: 'Tắm chó nhỏ (dưới 10kg)', serviceCode: 'SVC003', slug: 'tam-cho-nho', price: 100000, duration: 30, category: bathCat?._id, description: 'Tắm sạch, sấy khô cho chó dưới 10kg' },
-      { name: 'Tắm chó lớn (trên 10kg)', serviceCode: 'SVC004', slug: 'tam-cho-lon', price: 150000, duration: 45, category: bathCat?._id, description: 'Tắm sạch, sấy khô cho chó trên 10kg' },
-      { name: 'Tắm mèo', serviceCode: 'SVC005', slug: 'tam-meo', price: 120000, duration: 30, category: bathCat?._id, description: 'Tắm sạch, sấy khô cho mèo, dùng sữa tắm chuyên dụng' },
-      { name: 'Combo Tắm + Cắt tỉa chó', serviceCode: 'SVC006', slug: 'combo-tam-cat-tia-cho', price: 220000, duration: 90, category: groomingCat?._id, description: 'Trọn gói tắm và cắt tỉa lông cho chó', isFeatured: true },
-      { name: 'Combo Tắm + Cắt tỉa mèo', serviceCode: 'SVC007', slug: 'combo-tam-cat-tia-meo', price: 250000, duration: 90, category: groomingCat?._id, description: 'Trọn gói tắm và cắt tỉa lông cho mèo', isFeatured: true },
-      { name: 'Khám sức khỏe tổng quát', serviceCode: 'SVC008', slug: 'kham-suc-khoe-tong-quat', price: 200000, duration: 45, category: healthCat?._id, description: 'Khám sức khỏe tổng quát cho thú cưng, tư vấn dinh dưỡng' },
-      { name: 'Tiêm phòng vaccine', serviceCode: 'SVC009', slug: 'tiem-phong-vaccine', price: 300000, duration: 30, category: healthCat?._id, description: 'Tiêm phòng vaccine đầy đủ cho chó mèo' },
-      { name: 'Spa thư giãn cho thú cưng', serviceCode: 'SVC010', slug: 'spa-thu-gian', price: 350000, duration: 60, category: spaCat?._id, description: 'Dịch vụ spa cao cấp, massage thư giãn cho thú cưng', isFeatured: true },
-      { name: 'Cắt móng + Vệ sinh tai', serviceCode: 'SVC011', slug: 'cat-mong-ve-sinh-tai', price: 80000, duration: 20, category: bathCat?._id, description: 'Cắt móng và vệ sinh tai chuyên nghiệp' },
-      { name: 'Tẩy giun định kỳ', serviceCode: 'SVC012', slug: 'tay-giun-dinh-ky', price: 100000, duration: 15, category: healthCat?._id, description: 'Tẩy giun sán định kỳ cho thú cưng' },
+      { name: 'Cắt tỉa lông chó', serviceCode: 'SVC001', slug: 'cat-tia-long-cho', price: 150000, duration: 60, category: groomingCat?._id, description: 'Cắt tỉa lông chuyên nghiệp cho chó, tạo kiểu theo yêu cầu', isFeatured: true, imageUrl: 'https://picsum.photos/seed/svc-grooming-dog/400/400' },
+      { name: 'Cắt tỉa lông mèo', serviceCode: 'SVC002', slug: 'cat-tia-long-meo', price: 180000, duration: 60, category: groomingCat?._id, description: 'Cắt tỉa lông chuyên nghiệp cho mèo, nhẹ nhàng và an toàn', isFeatured: true, imageUrl: 'https://picsum.photos/seed/svc-grooming-cat/400/400' },
+      { name: 'Tắm chó nhỏ (dưới 10kg)', serviceCode: 'SVC003', slug: 'tam-cho-nho', price: 100000, duration: 30, category: bathCat?._id, description: 'Tắm sạch, sấy khô cho chó dưới 10kg', imageUrl: 'https://picsum.photos/seed/svc-bath-small/400/400' },
+      { name: 'Tắm chó lớn (trên 10kg)', serviceCode: 'SVC004', slug: 'tam-cho-lon', price: 150000, duration: 45, category: bathCat?._id, description: 'Tắm sạch, sấy khô cho chó trên 10kg', imageUrl: 'https://picsum.photos/seed/svc-bath-large/400/400' },
+      { name: 'Tắm mèo', serviceCode: 'SVC005', slug: 'tam-meo', price: 120000, duration: 30, category: bathCat?._id, description: 'Tắm sạch, sấy khô cho mèo, dùng sữa tắm chuyên dụng', imageUrl: 'https://picsum.photos/seed/svc-bath-cat/400/400' },
+      { name: 'Combo Tắm + Cắt tỉa chó', serviceCode: 'SVC006', slug: 'combo-tam-cat-tia-cho', price: 220000, duration: 90, category: groomingCat?._id, description: 'Trọn gói tắm và cắt tỉa lông cho chó', isFeatured: true, imageUrl: 'https://picsum.photos/seed/svc-combo-dog/400/400' },
+      { name: 'Combo Tắm + Cắt tỉa mèo', serviceCode: 'SVC007', slug: 'combo-tam-cat-tia-meo', price: 250000, duration: 90, category: groomingCat?._id, description: 'Trọn gói tắm và cắt tỉa lông cho mèo', isFeatured: true, imageUrl: 'https://picsum.photos/seed/svc-combo-cat/400/400' },
+      { name: 'Khám sức khỏe tổng quát', serviceCode: 'SVC008', slug: 'kham-suc-khoe-tong-quat', price: 200000, duration: 45, category: healthCat?._id, description: 'Khám sức khỏe tổng quát cho thú cưng, tư vấn dinh dưỡng', imageUrl: 'https://picsum.photos/seed/svc-health-check/400/400' },
+      { name: 'Tiêm phòng vaccine', serviceCode: 'SVC009', slug: 'tiem-phong-vaccine', price: 300000, duration: 30, category: healthCat?._id, description: 'Tiêm phòng vaccine đầy đủ cho chó mèo', imageUrl: 'https://picsum.photos/seed/svc-vaccine/400/400' },
+      { name: 'Spa thư giãn cho thú cưng', serviceCode: 'SVC010', slug: 'spa-thu-gian', price: 350000, duration: 60, category: spaCat?._id, description: 'Dịch vụ spa cao cấp, massage thư giãn cho thú cưng', isFeatured: true, imageUrl: 'https://picsum.photos/seed/svc-spa/400/400' },
+      { name: 'Cắt móng + Vệ sinh tai', serviceCode: 'SVC011', slug: 'cat-mong-ve-sinh-tai', price: 80000, duration: 20, category: bathCat?._id, description: 'Cắt móng và vệ sinh tai chuyên nghiệp', imageUrl: 'https://picsum.photos/seed/svc-nail-ear/400/400' },
+      { name: 'Tẩy giun định kỳ', serviceCode: 'SVC012', slug: 'tay-giun-dinh-ky', price: 100000, duration: 15, category: healthCat?._id, description: 'Tẩy giun sán định kỳ cho thú cưng', imageUrl: 'https://picsum.photos/seed/svc-deworm/400/400' },
     ];
     const services = [];
     for (const svc of serviceData) {

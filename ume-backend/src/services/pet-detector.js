@@ -58,13 +58,17 @@ class PetDetector {
     const enetPath = path.join(MODELS_DIR, 'efficientnet_b0.onnx');
 
     if (!fs.existsSync(yoloPath)) throw new Error(`Model not found: ${yoloPath}`);
-    if (!fs.existsSync(enetPath)) throw new Error(`Model not found: ${enetPath}`);
 
     const opts = { executionProviders: ['cpu'] };
     this.yolo = await ort.InferenceSession.create(yoloPath, opts);
-    this.classifier = await ort.InferenceSession.create(enetPath, opts);
 
-    console.log('✅ AI models loaded! (YOLO26n + EfficientNet-B0)');
+    if (fs.existsSync(enetPath)) {
+      this.classifier = await ort.InferenceSession.create(enetPath, opts);
+      console.log('✅ AI models loaded! (YOLO26n + EfficientNet-B0)');
+    } else {
+      this.classifier = null;
+      console.log('✅ YOLO26n loaded! (EfficientNet-B0 not found — breed classification disabled)');
+    }
   }
 
   /* ========================== Main Pipeline ========================== */
@@ -84,7 +88,7 @@ class PetDetector {
 
     // 4. Classify breed for dog/cat detections only
     for (const det of detections) {
-      if (det.type === 'dog' || det.type === 'cat') {
+      if ((det.type === 'dog' || det.type === 'cat') && this.classifier) {
         const breed = await this._classifyBreed(imagePath, det.bbox, det.type);
         det.breed = breed.en;
         det.breed_vi = breed.vi;
